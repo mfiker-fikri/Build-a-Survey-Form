@@ -1,106 +1,128 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <!-- Meta Tag -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta name="description" content="A short survey about the languages, tools and operating systems programmers use around the world.">
+    <meta name="theme-color" content="#0b1220">
+
     <!-- Title -->
     <title>Programmers Survey Form</title>
-    
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    
-    <div id="heading">
-        <h1 id=title>Programmers Talent!</h1>
-        <!-- <p id="description">We love to know about which technology and tools software engineers are using world wide! Each and every Developers opinions are very precious to us!</p> -->
-    </div>
 
-    <div id="main">
+    <header id="heading" class="glass">
+        <h1 id="title">Programmers Talent!</h1>
+        <p id="description">We love to know which technologies and tools software engineers use worldwide. Every developer's opinion is precious to us!</p>
+    </header>
 
-        <form id="survey-form">
-            <div id="input-fields">
-                <label id="name-label"><b>Name:</b></label>
-                <input id="name" type="name" name="name" class="form" required placeholder="Full Name"><br>
-                <br>
-                <label id="email-label"><b>Email:</b></label>
-                <input id="email" type="email" name="email" class="form" required placeholder="example@mail.com"><br>
-                <br>
-                <label id="number-label"><b>Age:</b></label>
-                <input id="number" type="number" name="number" class="form" min="5" max="99" placeholder="12+">
-            </div>
+    <main id="main">
 
-            <div id="dropdown-div"><br>
-                <label id="dropdown-label"><strong>Programming language you are expert at: </strong></label><br>
-                <select id="dropdown" name="code-lang" class="form">
-                    <option value="C">C (Programming Language)</option>
-                    <option value="Python">Python</option>
-                    <option value="C#">C#</option>
+        <form id="survey-form" class="glass" action="#" method="post">
+
+            <fieldset class="group">
+                <legend class="sr-only">About you</legend>
+
+                <div class="field">
+                    <label id="name-label" for="name">Name <span class="req" aria-hidden="true">*</span></label>
+                    <input id="name" type="text" name="name" class="form" required autocomplete="name" placeholder="Full Name">
+                </div>
+
+                <div class="field">
+                    <label id="email-label" for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                    <input id="email" type="email" name="email" class="form" required autocomplete="email" placeholder="example@mail.com">
+                </div>
+
+                <div class="field">
+                    <label id="number-label" for="number">Age <span class="hint">(optional)</span></label>
+                    <input id="number" type="number" name="age" class="form" min="12" max="99" inputmode="numeric" placeholder="12+">
+                </div>
+            </fieldset>
+
+            <div class="field">
+                <label id="dropdown-label" for="dropdown">Programming language you are an expert at</label>
+                <select id="dropdown" name="expert-lang" class="form" required>
+                    <option value="" disabled selected>Select a language</option>
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="csharp">C#</option>
+                    <option value="go">Go</option>
+                    <option value="java">Java</option>
+                    <option value="javascript">JavaScript</option>
                     <option value="php">PHP</option>
-                    <option value="Js">Java Script</option>
-                    <option value="Go">Go (Programming Language)</option>
-                    <option value="ruby">Ruby on rails</option>
-                    <option value="C++">C++</option>
-                    <option value="Java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="rust">Rust</option>
+                    <option value="typescript">TypeScript</option>
                 </select>
             </div>
 
-            <div id="button-area">
-                <br>
-                <label id="job-label"><b>Employment Status:</b></label><br>
-                <input type="radio" class="radio-inline" name="gender" value="employed" checked> Full-time job holder.(Employed)<br>
-                <input type="radio" class="radio-inline" name="gender" value="freelancer"> Part-time job holder.(Freelancer)<br>
-                <input type="radio" class="radio-inline" name="gender" value="applier"> Looking for a job.(Applier)<br>
-                <input type="radio" class="radio-inline" name="gender" value="unemployed"> I am a student.(Unemployed)
-            </div>
-            <div id="button-area"><br>
-                <label id="os-label"><b>Operating system experience: </b></label><br>
-                <input type="checkbox" name="os1" value="windows" checked> I am experienced with Windows-OS<br>
-                <input type="checkbox" name="os2" value="linux"> I am experienced with Linux-OS<br>
-                <input type="checkbox" name="0s3" value="mac"> I am experienced with Mac-OS<br>
-            </div>
+            <fieldset class="group">
+                <legend id="job-label">Employment status</legend>
+                <label class="choice"><input type="radio" class="radio-inline" name="employment" value="employed" checked> Full-time employee</label>
+                <label class="choice"><input type="radio" class="radio-inline" name="employment" value="freelancer"> Part-time / freelancer</label>
+                <label class="choice"><input type="radio" class="radio-inline" name="employment" value="job-seeker"> Looking for a job</label>
+                <label class="choice"><input type="radio" class="radio-inline" name="employment" value="student"> Student</label>
+            </fieldset>
 
-            <div id="dropdown"><br><br>
-                <label id="dropdown-label"><strong>Programming language you wanna be expert: </strong></label><br>
-                <select id="dropdown" name="code-lang" class="form"><br><br>
-                    <option value="C">C (Programming Language)</option>
-                    <option value="Python">Python</option>
-                    <option value="C#">C#</option>
+            <fieldset class="group">
+                <legend id="os-label">Operating system experience</legend>
+                <label class="choice"><input type="checkbox" name="os" value="windows" checked> Windows</label>
+                <label class="choice"><input type="checkbox" name="os" value="linux"> Linux</label>
+                <label class="choice"><input type="checkbox" name="os" value="macos"> macOS</label>
+            </fieldset>
+
+            <div class="field">
+                <label id="learn-label" for="learn-dropdown">Programming language you want to master</label>
+                <select id="learn-dropdown" name="learn-lang" class="form">
+                    <option value="" disabled selected>Select a language</option>
+                    <option value="c">C</option>
+                    <option value="cpp">C++</option>
+                    <option value="csharp">C#</option>
+                    <option value="go">Go</option>
+                    <option value="java">Java</option>
+                    <option value="javascript">JavaScript</option>
                     <option value="php">PHP</option>
-                    <option value="Js">Java Script</option>
-                    <option value="Go">Go (Programming Language)</option>
-                    <option value="ruby">Ruby on rails</option>
-                    <option value="C++">C++</option>
-                    <option value="Java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="rust">Rust</option>
+                    <option value="typescript">TypeScript</option>
                 </select>
             </div>
 
-            <div id="button-area"><br><br>
-                <label id="os-label"><b>Latest technology experience:</b></label><br>
-                <input type="checkbox" name="tech1" value="flutter"> Flutter UI<br>
-                <input type="checkbox" name="tech2" value="nodejs"> Node.js<br>
-                <input type="checkbox" name="tech3" value="tnflow"> Tensorflow<br>
-                <input type="checkbox" name="tech3" value="git"> Github<br>
-                <input type="checkbox" name="tech3" value="devops"> Dev-Ops<br>
+            <fieldset class="group">
+                <legend id="tech-label">Technology experience</legend>
+                <label class="choice"><input type="checkbox" name="tech" value="flutter"> Flutter</label>
+                <label class="choice"><input type="checkbox" name="tech" value="nodejs"> Node.js</label>
+                <label class="choice"><input type="checkbox" name="tech" value="react"> React</label>
+                <label class="choice"><input type="checkbox" name="tech" value="tensorflow"> TensorFlow</label>
+                <label class="choice"><input type="checkbox" name="tech" value="docker"> Docker</label>
+                <label class="choice"><input type="checkbox" name="tech" value="git"> Git &amp; GitHub</label>
+                <label class="choice"><input type="checkbox" name="tech" value="devops"> DevOps / CI-CD</label>
+            </fieldset>
+
+            <div class="field">
+                <label id="comments-label" for="comments">Do you have any suggestions about this survey?</label>
+                <textarea id="comments" name="comments" class="form" rows="5" placeholder="Please feel free to write a review..."></textarea>
             </div>
 
-
-            <div id="ending"><br><br>
-                <label id="comments-label">Do you have any suggestion about this survey?</label><br>
-                <textarea style= height:120px;" class="form" placeholder="Please feel free to write a review..."></textarea><br><br>
-                <input id="submit" type="submit"  class="form">
-            </div>
-
+            <button id="submit" type="submit" class="form">Submit</button>
         </form>
 
-    </div>
+    </main>
 
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
 </body>
 
-<!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
 </html>

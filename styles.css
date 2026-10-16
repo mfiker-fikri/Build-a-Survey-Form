@@ -1,96 +1,212 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* design tokens */
+:root {
+    --text: #f5f7fa;
+    --text-muted: #c3cad6;
+    --accent: #22d87d;
+    --accent-hover: #12b866;
+    --accent-ink: #062a17;
+    --field-bg: rgba(255, 255, 255, 0.92);
+    --field-text: #111827;
+    --glass-bg: rgba(15, 23, 42, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --radius: 16px;
+    --radius-sm: 8px;
+}
 
 /* css reset */
-*{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-image: url("../images/computer-program-coding-screen.jpg");
-    width: 100%;
-    height: auto;
-    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: clamp(1rem, 4vw, 4rem) 1rem;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.6;
+    color: var(--text);
+    background-color: #0b1220;
+    background-image:
+        linear-gradient(rgba(5, 10, 25, 0.55), rgba(5, 10, 25, 0.75)),
+        url("images/coding-screen-1920.jpg");
+    background-image:
+        linear-gradient(rgba(5, 10, 25, 0.55), rgba(5, 10, 25, 0.75)),
+        image-set(url("images/coding-screen-1920.webp") type("image/webp"),
+                  url("images/coding-screen-1920.jpg") type("image/jpeg"));
     background-size: cover;
-    /* opacity: 0.5; */
-    /* background-color: #45b6eb; */
-    color: #fff;
-    font-size: 1.2vw;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* glassmorphism card (https://css.glass) */
+.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+#heading,
+#main {
+    width: 100%;
+    max-width: 720px;
+    margin-inline: auto;
 }
 
 #heading {
-    max-width: 750px;
-    margin: 4rem auto;
-    padding: .6rem;
-
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15.3px);
-    -webkit-backdrop-filter: blur(15.3px);
-    border: 1px solid rgba(255, 255, 255, 0.23);
-}
-
-#main {
-    padding: 0% 20% 0% 20%;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    text-align: center;
 }
 
 #title {
-    font-size: 2.2rem;
-    text-align: center;
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.5rem);
+    font-weight: 700;
     line-height: 1.2;
-    padding: .6rem;
 }
 
 #description {
-    font-size: 1.1rem;
-    text-align: center;
-    padding: .2rem;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
 }
 
 #survey-form {
-    /* background-color: #2222425d; */
-    padding: 3rem 2.5rem;
-    /* border-radius: 7px; */
-
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.14);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(15.3px);
-    -webkit-backdrop-filter: blur(15.3px);
-    border: 1px solid rgba(255, 255, 255, 0.23);
+    display: grid;
+    gap: 1.75rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
 }
 
-#submit {
-    background: #22d87d;
-    color: #fff;
-    padding: .7rem;
-    font-size: 1.15rem;
+.group {
+    display: grid;
+    gap: 0.5rem;
+    border: none;
+}
+
+fieldset.group:has(> .field) {
+    gap: 1.25rem;
+}
+
+.field {
+    display: grid;
+    gap: 0.4rem;
+}
+
+label,
+legend {
+    font-weight: 600;
+}
+
+legend {
+    margin-bottom: 0.5rem;
+}
+
+.req {
+    color: var(--accent);
+}
+
+.hint {
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: fit-content;
+    font-weight: 400;
     cursor: pointer;
 }
 
-#submit:hover {
-    background: rgb(9, 168, 89);
+.choice input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--accent);
+    cursor: pointer;
 }
 
 .form {
-  width: 100%;
-  padding: .7rem;
-  border-radius: 6px;
-  font-size: 1.0rem;
-  border: none;
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--field-text);
+    background: var(--field-bg);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-@media only screen and (max-width:480px){
+.form::placeholder {
+    color: #6b7280;
+}
 
-    #main {
-        padding: 0% 0% 0% 0%;
+textarea.form {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+select.form {
+    cursor: pointer;
+}
+
+.form:focus-visible {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(34, 216, 125, 0.35);
+}
+
+.choice input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* only flag invalid fields after the user has typed something */
+.form:user-invalid {
+    border-color: #f87171;
+}
+
+#submit {
+    padding: 0.85rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-ink);
+    background: var(--accent);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#submit:hover {
+    background: var(--accent-hover);
+}
+
+#submit:active {
+    transform: translateY(1px);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
     }
 }
